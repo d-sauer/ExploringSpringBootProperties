@@ -1,0 +1,32 @@
+# Gradle
+**/.gradle
+**/build/
+
+# Ignore Gradle GUI config
+**/gradle-app.setting
+
+**/gradle/wrapper
+**/gradlew
+**/gradlew.bat
+# Avoid ignoring Gradle wrapper jar file
+!gradle/wrapper
+!/gradlew
+!/gradlew.bat
+
+# Ignore IntelliJ files
+/.idea/
+**/*.iws
+**/*.ipr
+**/*.iml
+**/target/
+**/overlays/
+
+# Ignore Eclipse project files
+**/.settings/
+**/.project
+**/.classpath
+**/bin
+
+##THIS IS FROM PIPELINE GENERATION
+.venv
+pipeline_branch.yml
