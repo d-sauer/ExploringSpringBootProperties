@@ -1,5 +1,7 @@
 package com.davorsauer.esbp.properties;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -22,6 +24,8 @@ import java.util.Map;
 public class ConfigSourcesConfigurer extends PropertySourcesPlaceholderConfigurer implements EnvironmentAware, InitializingBean {
 
     private Environment environment;
+
+    private static final Logger logger = LoggerFactory.getLogger(ConfigSourcesConfigurer.class);
 
     @Override
     public void setEnvironment(Environment environment) {
@@ -52,6 +56,8 @@ public class ConfigSourcesConfigurer extends PropertySourcesPlaceholderConfigure
         for (int i = propertySources.size() - 1; i >= 0; i--) {
             envPropSources.addBefore("systemProperties", propertySources.get(i));
         }
+
+        envPropSources.forEach(propertySource -> logger.info("New Property source: {}", propertySource.getName()));
     }
 
     private PropertySource getCustomLoadedPropertySource() {
